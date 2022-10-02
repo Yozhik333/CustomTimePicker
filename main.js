@@ -9,6 +9,8 @@ const hr_down = document.querySelector('.time-picker .hour .hr-down');
 const min_up = document.querySelector('.time-picker .minute .min-up');
 const min_down = document.querySelector('.time-picker .minute .min-down');
 
+let input_length = document.getElementById('inputId');
+
 let d = new Date();
 
 let hour = d.getHours();
@@ -25,7 +27,14 @@ min_down.addEventListener('click', minute_down);
 hr_element.addEventListener('change', hour_change);
 min_element.addEventListener('change', minute_change);
 
+const hr_element2 = document.querySelector('.inputId');
+
+hr_element.onkeypress = function() {
+	if (this.value.length > 1) return false;
+}
+
 function hour_change (e) {
+
 	if (e.target.value > 23) {
 		e.target.value = 23;
 	} else if (e.target.value < 0) {
