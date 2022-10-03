@@ -31,6 +31,9 @@ const hr_element2 = document.querySelector('.inputId');
 
 hr_element.onkeypress = function() {
 	if (this.value.length > 1) return false;
+	// if (this.value.length > this.maxLength){
+	// 	this.value = this.value.slice(0, this.maxLength);
+	// }
 }
 
 function hour_change (e) {
