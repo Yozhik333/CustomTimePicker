@@ -11,20 +11,45 @@
   <body>
     <h1>Custom<span>Time</span>Picker</h1>
     <div class="time-picker" data-time="00:00">
-      <div class="hour">
-        <div class="hr-up"></div>
-        <input type="number" class="hr" value="00" />
-        <div class="hr-down"></div>
+      <h2>{{ name event }}</h2>
+      <div class="time-picker-input">
+        <div class="hour">
+          <div class="hr-up"></div>
+          <input pattern="[0-9]*" type="number" class="hr" value="00" />
+          <div class="hr-down"></div>
+        </div>
+
+        <div class="separator">:</div>
+
+        <div class="minute">
+          <div class="min-up"></div>
+          <input type="number" class="min" value="00" />
+          <div class="min-down"></div>
+        </div>
       </div>
 
-      <div class="separator">:</div>
-
-      <div class="minute">
-        <div class="min-up"></div>
-        <input type="number" class="min" value="00" />
-        <div class="min-down"></div>
+      <div class="btn">
+        <button type="submit" onclick="peredacha()">Ok</button>
       </div>
     </div>
+
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+      "
+    >
+      <input
+        type="time"
+        class="form-control"
+        data-field="attend_time"
+        value=""
+      />
+    </div>
+
+    <!-- <input inputmode="numeric" pattern="[0-9]*" type="text" name="creditcard" /> -->
 
     <!-- <div style="display: flex; align-items: center; justify-content: center">
       <input type="number" max="2" placeholder="00" class="inputId" />

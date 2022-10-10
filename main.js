@@ -9,7 +9,10 @@ const hr_down = document.querySelector('.time-picker .hour .hr-down');
 const min_up = document.querySelector('.time-picker .minute .min-up');
 const min_down = document.querySelector('.time-picker .minute .min-down');
 
-let input_length = document.getElementById('inputId');
+const tp_btn = document.querySelector('.time-picker .btn button'); //
+const tp_to_input = document.querySelector('.form-control'); //
+
+let input_length = document.getElementById('inputId'); // ?
 
 let d = new Date();
 
@@ -27,17 +30,19 @@ min_down.addEventListener('click', minute_down);
 hr_element.addEventListener('change', hour_change);
 min_element.addEventListener('change', minute_change);
 
-const hr_element2 = document.querySelector('.inputId');
+const hr_element2 = document.querySelector('.inputId'); // ?
 
 hr_element.onkeypress = function() {
 	if (this.value.length > 1) return false;
 	// if (this.value.length > this.maxLength){
 	// 	this.value = this.value.slice(0, this.maxLength);
 	// }
+	if (hr_element.validity.valueMissing && !hr_element.validity.badInput) {
+		errorMessage.textContent = "field must not be empty"
+		}
 }
 
 function hour_change (e) {
-
 	if (e.target.value > 23) {
 		e.target.value = 23;
 	} else if (e.target.value < 0) {
@@ -108,4 +113,16 @@ function formatTime (time) {
 		time = '0' + time;
 	}
 	return time;
+}
+
+// tp_btn.onclick = function(time_picker_element){
+// 	time_picker_element.dataset = time_picker_element.value;
+	
+// console.log(time_picker_element);
+// }
+function peredacha(){
+	console.log(hr_element.value);
+	tp_to_input.value = hr_element.value + ':' + min_element.value;
+	console.log(tp_to_input.dataset);
+	console.log(time_picker_element.dataset);
 }

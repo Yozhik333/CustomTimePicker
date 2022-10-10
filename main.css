@@ -5,8 +5,8 @@
 }
 
 body {
-	background-color: #FFCE00;
-	font-family: 'Saira', sans-serif;
+	background-color: #eee;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -20,11 +20,12 @@ input[type="number"] {
 }
 
 h1 {
-	font-size: 42px;
+	font-size: 150%;
 	text-align: center;
 	text-transform: uppercase;
 	margin: 30px 0px;
 	font-weight: 900;
+	font-family: cursive;
 }
 
 h1 span {
@@ -33,29 +34,41 @@ h1 span {
 
 .time-picker {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 
 	width: 100%;
 	max-width: 200px;
+	/* height: calc(1.5em + .75rem + 2px); */
 	margin: 0 auto;
-	padding: 25px 15px;
+	padding: .375rem .75rem;
 
 	background-color: #F3F3F3;
-	border-radius: 8px;
+	border-radius: 5px;
 	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
 
-	color: #53565A;
-	font-size: 42px;
-	font-weight: 700;
+	color: #495057;
+	font-size: 32px;
+	font-weight: 400;
 
 	user-select: none;
+}
+.time-picker-input{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 50px 0;
+}
+.time-picker h2{
+	font-size: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #dcdcdc;
 }
 
 .time-picker .hour,
 .time-picker .minute {
 	position: relative;
-	min-width: 60px;
 	text-align: center;
 	display: flex;
 	justify-content: stretch;
@@ -65,14 +78,14 @@ h1 span {
 .time-picker .hour .hr,
 .time-picker .minute .min {
 	background: none;
-	font-size: 42px;
+	font-size: 32px;
 	appearance: none;
 	border: none;
 	outline: none;
 	display: block;
 	width: 100%;
 	text-align: center;
-	font-family: 'Saira', sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .time-picker .hour .hr-up,
@@ -80,34 +93,121 @@ h1 span {
 .time-picker .minute .min-up,
 .time-picker .minute .min-down {
 	position: absolute;
-	left: 50%;
+	background-color: transparent;
 	transform: translateX(-50%);
-
+	left: 50%;
+	width: 40px;
+	height: 10px;
+	display: block;
+	border-radius: 2px;
+	border: 1px solid #ced4da;
 	width: 40px;
 	height: 20px;
-
-	border-left: 20px solid transparent;
-	border-right: 20px solid transparent;
-
 	cursor: pointer;
 }
 
 .time-picker .hour .hr-up,
 .time-picker .minute .min-up {
-	top: -10px;
-	border-bottom: 20px solid #AAA;
+	top: -20px;
+}
+.time-picker .hour .hr-up::before,
+.time-picker .minute .min-up::before {
+	content: "";
+	position: absolute;
+	bottom: 50%;
+	right: 4px;
+	background-color: #08c;
+	width: 17px;
+	height: 3px;
+	display: block;
+	border-radius: 30px;
+	transform: rotate(30deg);
+	transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+}
+.time-picker .hour .hr-up::after,
+.time-picker .minute .min-up::after{
+	content: "";
+	position: absolute;
+	bottom: 50%;
+	left: 4px;
+	background-color: #08c;
+	width: 17px;
+	height: 3px;
+	display: block;
+	border-radius: 30px;
+	transform: rotate(-30deg);
+	transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
 }
 
 .time-picker .hour .hr-down,
 .time-picker .minute .min-down {
-	bottom: -10px;
-	border-top: 20px solid #AAA;
+	bottom: -20px;
+}
+.time-picker .hour .hr-down::before,
+.time-picker .minute .min-down::before {
+	content: "";
+	position: absolute;
+	bottom: 50%;
+	right: 4px;
+	background-color: #08c;
+	width: 17px;
+	height: 3px;
+	display: block;
+	border-radius: 30px;
+	transform: rotate(-30deg);
+	transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+}
+.time-picker .hour .hr-down::after,
+.time-picker .minute .min-down::after{
+	content: "";
+	position: absolute;
+	bottom: 50%;
+	left: 4px;
+	background-color: #08c;
+	width: 17px;
+	height: 3px;
+	display: block;
+	border-radius: 30px;
+	transform: rotate(30deg);
+	transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
 }
 
 .time-picker .hour .hr-up:hover,
 .time-picker .hour .hr-down:hover,
 .time-picker .minute .min-up:hover,
 .time-picker .minute .min-down:hover {
-	border-bottom-color: #53565A;
-	border-top-color: #53565A;
+	border-color: #53565A;
+}
+.time-picker .hour .hr-up:focus,
+.time-picker .hour .hr-down:focus,
+.time-picker .minute .min-up:focus,
+.time-picker .minute .min-down:focus {
+	border-color: #ced4da;
+}
+
+
+/* .form-control */
+.form-control{
+	display: block;
+	width: 100%;
+	max-width: 95px;
+	height: calc(1.5em + 0.75rem + 2px);
+	padding: 0.375rem 0.75rem;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control:focus{
+	color: #495057;
+	background-color: #fff;
+	border-color: #80bdff;
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
